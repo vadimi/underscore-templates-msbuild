@@ -35,3 +35,6 @@ Run this task:
 ```Namespace``` - **optional**, by default all templates will be stored in JST object like ```JST['myTemplate']```. It's possible to override this behavior by using this parameter.
 
 ```Interpolate, Evaluate, Escape``` - **optional**, see ```_.templateSettings``` description in [underscorejs](http://underscorejs.org/#template) documentation.
+
+## License
+License: MIT [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
