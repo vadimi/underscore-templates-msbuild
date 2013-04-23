@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Underscore.Templates.MsBuild</id>
+    <title>Precompiler for Underscore.js templates</title>
+    <version>1.0.0</version>
+    <authors>Vadzim Ivanou</authors>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>https://github.com/vadimi/underscore-templates-msbuild</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MsBuild task for precompilation of Underscore.js templates.</description>
+    <tags>underscore msbuild precompile</tags>
+  </metadata>
+</package>
