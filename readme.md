@@ -3,6 +3,8 @@ Underscore.js precompiler
 
 MsBuild task to precompile underscore.js templates and store them into a separate js file.
 
+![NuGet Install](https://raw.github.com/vadimi/underscore-templates-msbuild/master/nugetinstall.png)
+
 ## Example
 First of all it's necessary to include task:
 
