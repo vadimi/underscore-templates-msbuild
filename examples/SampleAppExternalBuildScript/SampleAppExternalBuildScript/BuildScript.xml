@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/MsBuild/2003">
+	<Import Project="..\packages\Underscore.Templates.MsBuild.1.0.1\build\Underscore.Templates.MsBuild.targets" />
+
+	<Target Name="Build">
+		<ItemGroup>
+			<TemplateFiles Include="$(MSBuildProjectDirectory)\Scripts\app\templates\*.html" />
+		</ItemGroup>
+		<UnderscoreCompileTask
+		  SourceFiles="@(TemplateFiles)"
+		  OutputFile="$(MSBuildProjectDirectory)\Scripts\app\compiledTemplates.js"
+		  Interpolate="\{\{(.+?)\}\}"
+		  Evaluate="\{%([\s\S]+?)%\}"
+		  Escape="\{%-([\s\S]+?)%\}" />
+	</Target>
+	
+</Project>
