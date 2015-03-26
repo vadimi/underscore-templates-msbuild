@@ -11,6 +11,8 @@ namespace Underscore.Templates.MsBuild
     /// </summary>
     public class UnderscoreCompileTask : Task
     {
+        private const string Module = "(function(global) {{\n{0}\n}})(this);";
+
         [Required]
         public ITaskItem[] SourceFiles { get; set; }
 
@@ -77,10 +79,10 @@ namespace Underscore.Templates.MsBuild
                 {
                     var templateName = Path.GetFileNameWithoutExtension(sourceFile.ItemSpec);
                     var template = File.ReadAllText(sourceFile.ItemSpec);
-                    compiledTemplates.AppendFormat("{0}[\"{1}\"] = {2};\n", ns, templateName, compiler.Compile(template));
+                    compiledTemplates.AppendFormat("global.{0}[\"{1}\"] = {2};\n", ns, templateName, compiler.Compile(template));
                 }
 
-                File.WriteAllText(OutputFile, compiledTemplates.ToString());
+                File.WriteAllText(OutputFile, string.Format(Module, compiledTemplates));
                 Log.LogMessage("Compiled {0} templates to {1}", SourceFiles.Length, OutputFile);
             }
         }
@@ -92,7 +94,7 @@ namespace Underscore.Templates.MsBuild
             foreach (var nsPart in nsParts)
             {
                 nsPartObject += nsPart;
-                compiledTemplates.AppendFormat("{0} = {0} || {{}};\n", nsPartObject);
+                compiledTemplates.AppendFormat("global.{0} = global.{0} || {{}};\n", nsPartObject);
                 nsPartObject += ".";
             }
         }
